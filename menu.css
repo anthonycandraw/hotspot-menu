@@ -14,12 +14,12 @@ li { list-style: none; padding: 0; }
   justify-content: flex-start;
 }
 
-.hamburger {
+.header {
   background-color: #fff;
   box-shadow: 0px 0 30px -34px rgba(0,0,0,1);
   display: block;
   height: 100vh;
-  position: relative;
+  position: fixed;
   -webkit-transition: box-shadow .5s;
      -moz-transition: box-shadow .5s;
       -ms-transition: box-shadow .5s;
@@ -28,18 +28,19 @@ li { list-style: none; padding: 0; }
   width: 70px;
 }
 
-.hamburger:hover {
-  box-shadow: 24px 0 30px -34px rgba(0,0,0,1);
-}
+.header--left { left: 0; }
+.header--right { right: 0; }
+.header--left:hover { box-shadow: 24px 0 30px -34px rgba(0,0,0,1); }
+.header--right:hover { box-shadow: -24px 0 30px -34px rgba(0,0,0,1); }
 
-.hamburger::before {
-  background-color: #7BFFC0;
+.hamburger::before,
+.contact::before {
   mix-blend-mode: multiply;
   border-radius: 100px;
   bottom: 0;
   content: '';
   height: 0;
-  left: 10px;
+  left: 5px;
   margin: auto;
   pointer-events: none;
   position: absolute;
@@ -53,7 +54,11 @@ li { list-style: none; padding: 0; }
   width: 0;
 }
 
-.hamburger:hover::before {
+.hamburger::before { background-color: #23F0C7; }
+.contact::before { background-color: #FFF07C; }
+
+.hamburger:hover::before,
+.contact:hover::before {
   height: 160px;
   left: -50px;
   width: 160px;
@@ -78,12 +83,14 @@ li { list-style: none; padding: 0; }
 .hamburger__line:nth-child(2) { width: 20px; }
 .hamburger__line:nth-child(3) { margin-top: 3px; width: 12px; }
 
-.hamburger__line:nth-child(2)::before {
+.hamburger::after {
   bottom: 0;
   color: #000;
   content: 'Menu';
   font: bold 12px/1 Arial, sans-serif;
-  left: 60px;
+  height: 12px;
+  left: 100px;
+  margin: auto;
   opacity: 0;
   position: absolute;
   text-transform: uppercase;
@@ -91,8 +98,8 @@ li { list-style: none; padding: 0; }
   top: 0;
 }
 
-.hamburger:hover .hamburger__line:nth-child(2)::before {
-  left: 30px;
+.hamburger:hover::after {
+  left: 54px;
   opacity: 1;
 }
 
